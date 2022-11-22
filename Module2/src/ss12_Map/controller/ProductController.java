@@ -2,6 +2,7 @@ package ss12_Map.controller;
 
 import ss12_Map.service.impl.ProductService;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class ProductController {
@@ -9,7 +10,7 @@ public class ProductController {
     private ProductService product = new ProductService() {
     };
 
-    public void menuMangement() {
+    public void menuMangement() throws IOException {
         while (true) {
             System.out.println("--------------Quản lý sản phẩm--------------");
             System.out.println("1.Thêm sản phẩm mới");

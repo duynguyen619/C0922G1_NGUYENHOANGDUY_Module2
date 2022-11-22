@@ -1,13 +1,15 @@
 package ss12_Map.service;
 
+import java.io.IOException;
+
 public interface IProductService {
-    void addProduct();
+    void addProduct() throws IOException;
 
-    void editProduct();
+    void editProduct() throws IOException;
 
-    void displayProduct();
+    void displayProduct() throws IOException;
 
-    void seachProduct();
+    void seachProduct() throws IOException;
 
-    void deleteProduct();
+    void deleteProduct() throws IOException;
 }
