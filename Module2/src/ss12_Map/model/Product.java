@@ -3,12 +3,10 @@ package ss12_Map.model;
 public class Product {
     private String id;
     private String name;
-    private Double price;
+    private int price;
 
-
-
-    public Product(String id, String name, Double price) {
-        this.id = this.id;
+    public Product(String id, String name, int price) {
+        this.id = id;
         this.name = name;
         this.price = price;
     }
@@ -29,11 +27,11 @@ public class Product {
         this.name = name;
     }
 
-    public Double getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 

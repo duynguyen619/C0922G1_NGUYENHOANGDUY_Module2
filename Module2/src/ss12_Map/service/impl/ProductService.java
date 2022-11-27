@@ -19,25 +19,22 @@ public class ProductService implements IProductService {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        products.add(new Product("SP-1", "Iphone", 10000.0));
-        products.add(new Product("SP-2", "Samsung", 30000.0));
-        products.add(new Product("SP-3", "Nokia", 50000.0));
     }
 
     public void addProduct() throws IOException {
         products=readProductFile("src/ss12_Map/data/Product.csv");
         Product product = this.InfoProduct();
         products.add(product);
-        writeProductFile("src/bai_mau/Quan_Ly_Nhan_Su/data/Student.txt", products);
+        writeProductFile("src/ss12_Map/data/Product.csv", products);
         System.out.println("Thêm mới thành công");
     }
 
     public Product InfoProduct() {
-        String id = "SV-" + (products.size() + 1);
+        String id = "SP-" + (products.size() + 1);
         System.out.print("Mời bạn nhập tên sản phẩm: ");
         String name = scanner.nextLine();
         System.out.print("Mời bạn nhập giá: ");
-        Double price = Double.valueOf(scanner.nextLine());
+        int price = Integer.parseInt(scanner.nextLine());
         return new Product(id, name, price);
     }
 
@@ -50,14 +47,11 @@ public class ProductService implements IProductService {
         for (Product product : products) {
             if (Objects.equals(idEdit, product.getName())) {
                 temp = product;
-                String setId = "SV-" + (products.size() + 1);
-
+                String setId = "SP-" + (products.size() + 1);
                 System.out.println("Nhập chỉnh sửa tên của sản phẩm: ");
                 String setName = scanner.nextLine();
-
                 System.out.println("Nhập chỉnh sửa giá của sản phẩm: ");
-                Double setPrice = scanner.nextDouble();
-
+                int setPrice=Integer.parseInt(scanner.nextLine());
                 product1 = new Product(setId, setName, setPrice);
                 break;
             }
@@ -65,22 +59,6 @@ public class ProductService implements IProductService {
         if (temp != null) {
             int index = products.indexOf(temp);
             products.set(index, product1);
-        }
-    }
-
-    public void search() throws IOException {
-        products=readProductFile("src/ss12_Map/data/Product.csv");
-        System.out.print("Nhập tên: ");
-        String name = scanner.nextLine();
-        int count = 0;
-        for (Product product : products) {
-            if (name.equals(product.getName())) {
-                System.out.println(product);
-                count++;
-            }
-        }
-        if (count == 0) {
-            System.out.println("Không có tên sản phẩm");
         }
     }
 
@@ -157,7 +135,7 @@ public class ProductService implements IProductService {
         String[] info;
         for (String line : strings) {
             info = line.split(",");
-            products.add(new Product(info[0], info[1], Double.parseDouble(info[2])));
+            products.add(new Product(info[0],info[1],Integer.parseInt(info[2])));
         }
         return products;
     }
@@ -169,12 +147,12 @@ public class ProductService implements IProductService {
         bufferedWriter.close();
     }
 
-    public static void writeProductFile(String path, List<Product> students) throws IOException {
-        String data = " ";
+    public static void writeProductFile(String path, List<Product> products) throws IOException {
+        StringBuilder data = new StringBuilder(" ");
         for (Product product : products) {
-            data += product.toString();
-            data += "\n";
+            data.append(product.toString());
+            data.append("\n");
         }
-        writeFile(path, data);
+        writeFile(path, data.toString());
     }
 }
