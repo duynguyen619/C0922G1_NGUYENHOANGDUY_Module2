@@ -1,4 +1,4 @@
-package illegalTriangleException;
+package ss15_illegalTriangleException;
 
 public class Triangle {
     double a, b, c;

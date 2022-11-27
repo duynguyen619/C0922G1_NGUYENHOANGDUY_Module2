@@ -1,4 +1,4 @@
-package illegalTriangleException;
+package ss15_illegalTriangleException;
 
 import java.util.Scanner;
 
